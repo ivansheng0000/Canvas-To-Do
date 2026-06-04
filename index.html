@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Helper Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="browser-shell" aria-label="Calendar website">
+      <div class="app-layout">
+        <aside class="sidebar" aria-label="Primary navigation">
+          <div class="brand">
+            <span class="brand-mark">⌂</span>
+            <strong>Course Helper</strong>
+          </div>
+
+          <nav class="nav-list">
+            <button class="nav-button active" type="button" data-page="planner">
+              <span>▦</span>
+              Planner
+              <strong id="plannerCount">0</strong>
+            </button>
+            <button class="nav-button" type="button" data-page="tasks">
+              <span>☑</span>
+              All Tasks
+              <strong id="allTasksCount">0</strong>
+            </button>
+            <button class="nav-button" type="button" data-page="ai">
+              <span>✦</span>
+              AI Agent
+            </button>
+          </nav>
+
+          <div class="sidebar-section">
+            <p>Priorities</p>
+            <span><i class="dot high"></i>High</span>
+            <span><i class="dot medium"></i>Medium</span>
+            <span><i class="dot low"></i>Low</span>
+          </div>
+        </aside>
+
+        <section class="workspace">
+          <section class="page active" id="plannerPage" aria-label="Planner page">
+            <header class="planner-header">
+              <div>
+                <h1>Planner</h1>
+                <p id="plannerSubtitle">Week view</p>
+              </div>
+
+              <div class="toolbar" aria-label="Planner controls">
+                <button class="ghost-button" id="prevRange" type="button" aria-label="Previous range">‹</button>
+                <button class="ghost-button wide" id="todayButton" type="button">Today</button>
+                <button class="ghost-button" id="nextRange" type="button" aria-label="Next range">›</button>
+                <div class="zoom-controls" aria-label="Calendar zoom controls">
+                  <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+                  <span id="zoomLabel">Week</span>
+                  <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+                </div>
+              </div>
+            </header>
+
+            <form class="quick-add" id="todoForm" aria-label="Add task">
+              <label>
+                Task
+                <input
+                  id="taskInput"
+                  name="task"
+                  type="text"
+                  maxlength="90"
+                  placeholder="Add a task"
+                  autocomplete="off"
+                  required
+                />
+              </label>
+              <label>
+                Date
+                <input id="dateInput" name="date" type="date" required />
+              </label>
+              <label>
+                Time
+                <input id="timeInput" name="time" type="time" />
+              </label>
+              <label>
+                Priority
+                <select id="priorityInput" name="priority">
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                  <option value="low">Low</option>
+                </select>
+              </label>
+              <button class="add-button" type="submit">Add</button>
+            </form>
+
+            <div class="calendar-stage" id="calendarStage"></div>
+          </section>
+
+          <section class="page" id="tasksPage" aria-label="All tasks page">
+            <header class="planner-header">
+              <div>
+                <h1>All Tasks</h1>
+                <p id="allTasksSubtitle">Every task across your calendar</p>
+              </div>
+              <div class="filter-tabs" role="tablist" aria-label="Task filters">
+                <button class="active" type="button" data-filter="all">All</button>
+                <button type="button" data-filter="open">Open</button>
+                <button type="button" data-filter="done">Done</button>
+              </div>
+            </header>
+            <ul class="all-task-list" id="allTaskList"></ul>
+          </section>
+
+          <section class="page" id="aiPage" aria-label="AI agent page">
+            <div class="empty-feature">
+              <span>✦</span>
+              <h1>AI Agent</h1>
+              <p>This page is ready in the navigation, but the agent is not implemented yet.</p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
